@@ -45,7 +45,7 @@ class attention_net(nn.Module):
         self.partcls_net = nn.Linear(512 * 4, num_classes)
         _, edge_anchors, _ = generate_default_anchor_maps()
         self.pad_side = 224
-        self.edge_anchors = (edge_anchors + 224).astype(np.int)
+        self.edge_anchors = (edge_anchors + 224).astype(np.int32)
 
     def forward(self, x):
         resnet_out, rpn_feature, feature = self.pretrained_model(x)
